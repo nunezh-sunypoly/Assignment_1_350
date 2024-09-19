@@ -11,11 +11,8 @@
 
 --	2. 	show how many countries there are in each region (show the region id and the count)
 
-    SELECT	COUNT(DISTINCT country_name)
-    FROM 	countries
-    WHERE 	countries.region_id = (		SELECT	region_id
-                                        FROM	countries
-                                        WHERE	countries.country_id ~ '^[iI][nN]');
+    SELECT  region_id, COUNT(*) AS country_count 
+    FROM    countries GROUP BY region_id;
 
 -- 	3. 	show the first and last names of each employee who is a manager (that is whose job
  		title contains the word ‘Manager’)
